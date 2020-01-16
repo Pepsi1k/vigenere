@@ -1,9 +1,35 @@
+#include <fstream>
 #include <iostream>
+#include <streambuf>
 #include <string>
 
 int main(int argc, const char* argv[]) {
 	// const std::string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
 	// int LENGTH = alphabet.length();
+
+	std::cout << "argc: " << argc << std::endl;
+	if (argc != 3) {
+		return 1;
+	}
+
+
+	std::ifstream in_file(argv[1]);
+	std::ifstream out_file;
+
+	std::string key((std::istreambuf_iterator<char>(in_file)),
+		std::istreambuf_iterator<char>());
+
+	in_file.close();
+	in_file.open(argv[2]);
+	std::string file((std::istreambuf_iterator<char>(in_file)),
+		std::istreambuf_iterator<char>());
+	std::cout << "key: " << key;
+	std::cout << "key_length: " << key.length() << std::endl;
+	std::cout << "file: " << file;
+	std::cout << "file_length: " << file.length() << std::endl;
+	if ((key.lenght() < 2) || (file.length() < 2)) {
+		return 2;
+	}
 
 	int LENGTH = 128;
 
@@ -34,18 +60,13 @@ int main(int argc, const char* argv[]) {
 	}
 
 
-	// print vigenere_square
-	/*
-	for (std::size_t i = 0; i < LENGTH; i++) {
-		for (std::size_t j = 0; j < LENGTH; j++) {
-			std::cout << vigenere_square[i][j];
-		}
-		std::cout << std::endl;
-	}
-	*/
+	// encrypting
+	for (std::size_t i_file = 0; i_file < file.length(); i_file) {
 
-	std::cout << std::endl;
-	std::cout << vigenere_square[90][92] << std::endl;
+		file[i_file] 
+	}
+	
+
 	// delete vigenere_suare
 	for (std::size_t i = 0; i < LENGTH; i++) {
 		delete[] vigenere_square[i];

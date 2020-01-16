@@ -1,11 +1,11 @@
 
 all: vigenere
 
-vigenere: main.o
-	g++ main.o -o a.out
+vigenere: encrypt.o
+	g++ encrypt.o -o encrypt
 
-main.o: main.cpp
-	g++ -c main.cpp 
+encrypt.o: encrypt.cpp
+	g++ -c encrypt.cpp 
 
 clean: 
 	rm -rf *.o
